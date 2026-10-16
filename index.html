@@ -1,55 +1,32 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Coni Teck</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        text-align: center;
-        margin: 0;
-        padding: 0;
-        background: #f8f8f8;
-      }
-      header {
-        background: #333;
-        color: white;
-        padding: 2rem 1rem;
-      }
-      a {
-        display: inline-block;
-        margin: 0.5rem;
-        padding: 0.75rem 1.5rem;
-        background: #0070f3;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-      }
-      a:hover {
-        background: #0059c1;
-      }
-      section {
-        padding: 2rem 1rem;
-      }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>coniteck | 차세대 디지털 인프라 & 가상 테크 시스템</title>
+    <meta name="description" content="coniteck 가상 IT 엔지니어링 기업 공식 랜딩 및 분산 서브 프로젝트(자산 대시보드, 인터랙티브 웹게임, 성향 테스트) 허브" />
+    <meta name="theme-color" content="#05070f" />
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://coniteck.cc/" />
+    <meta property="og:title" content="coniteck | Intelligent Web Horizon" />
+    <meta property="og:description" content="고성능 프론트엔드 분산 아키텍처 및 인터랙티브 웹 솔루션 허브" />
+
+    <!-- Google Fonts: Inter & JetBrains Mono -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense -->
     <script
       async
       src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4240601631538934"
       crossorigin="anonymous"
     ></script>
   </head>
-  <body>
-    <header>
-      <h1>🎉 성향 테스트 플랫폼</h1>
-      <p>테토-에겐 성향 테스트 사이트입니다.</p>
-    </header>
-    <section>
-      <a href="https://test.coniteck.cc/" target="_blank"
-        >➡️ 테토‑에겐 성향 테스트</a
-      >
-      <!-- 앞으로 추가될 MBTI 테스트 링크 -->
-      <!-- <a href="https://mbti.coniteck.cc/" target="_blank">➡️ MBTI 테스트 (Coming soon)</a> -->
-    </section>
+  <body class="bg-[#05070f] text-slate-100 antialiased selection:bg-cyan-500 selection:text-slate-950">
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

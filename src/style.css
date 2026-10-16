@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: #05070f;
+    color: #e2e8f0;
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+  }
+}
+
+/* 사이버네틱 그리드 배경 */
+.cyber-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(0, 240, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 240, 255, 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* 글래스모피즘 카드 */
+.glass-panel {
+  background: rgba(12, 16, 32, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-panel-hover:hover {
+  background: rgba(16, 24, 48, 0.85);
+  border-color: rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 25px -5px rgba(0, 240, 255, 0.25);
+  transform: translateY(-2px);
+}
+
+/* 네온 글로우 텍스트 */
+.neon-text-cyan {
+  text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.neon-text-emerald {
+  text-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+}
+
+/* 스크롤바 스타일 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #05070f;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
