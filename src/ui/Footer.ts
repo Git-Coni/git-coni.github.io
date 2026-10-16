@@ -9,7 +9,7 @@ export function renderFooter(): string {
   const services = getServices(lang);
 
   return `
-    <footer class="border-t border-white/[0.08] bg-[#080d19] text-slate-400 py-12 text-sm relative z-10">
+    <footer class="border-t border-white/[0.08] bg-[#080d19] text-slate-400 py-10 sm:py-12 text-sm relative z-10 pb-20 sm:pb-12">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <!-- Column 1: Brand Info -->
@@ -22,7 +22,7 @@ export function renderFooter(): string {
                 ${COMPANY_INFO.name}
               </span>
             </div>
-            <p class="text-xs text-slate-400 leading-relaxed max-w-md">
+            <p class="text-xs text-slate-400 leading-relaxed max-w-md break-keep">
               ${t.footer.description}
             </p>
             <div class="text-xs text-slate-400">
@@ -60,7 +60,7 @@ export function renderFooter(): string {
             </h4>
             <ul class="space-y-2 text-xs text-slate-400">
               ${t.footer.archItems.map(item => `
-                <li>• ${item}</li>
+                <li class="break-keep">• ${item}</li>
               `).join('')}
             </ul>
           </div>
