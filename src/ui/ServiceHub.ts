@@ -11,18 +11,18 @@ export function renderServicesHubSection(): string {
   const services = getServices(lang);
 
   return `
-    <section id="services-hub" class="py-20 md:py-28 relative z-10 border-t border-white/[0.08] bg-[#0a0f1d]">
+    <section id="services-hub" class="py-16 sm:py-20 md:py-28 relative z-10 border-t border-white/[0.08] bg-[#0a0f1d]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Section Title -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12">
           <div>
             <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded bg-slate-800 text-xs font-medium text-slate-300 mb-3 border border-slate-700">
               <span>${t.hub.badge}</span>
             </div>
-            <h2 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">
+            <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white tracking-tight break-keep">
               ${t.hub.title}
             </h2>
-            <p class="mt-2 text-slate-400 text-sm max-w-xl">
+            <p class="mt-2 text-slate-400 text-xs sm:text-sm max-w-xl break-keep">
               ${t.hub.description}
             </p>
           </div>
@@ -32,7 +32,7 @@ export function renderServicesHubSection(): string {
         </div>
 
         <!-- Services Grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
           ${services.map(service => {
             const isLive = service.status === 'live';
             const badgeClass = isLive 
@@ -40,24 +40,24 @@ export function renderServicesHubSection(): string {
               : 'bg-slate-800 text-slate-400 border-slate-700';
 
             return `
-              <div class="corporate-card rounded-xl p-5 flex flex-col justify-between">
+              <div class="corporate-card rounded-xl p-4 sm:p-5 flex flex-col justify-between">
                 <div>
-                  <div class="flex items-start justify-between mb-4">
-                    <div class="w-10 h-10 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300">
-                      ${getServiceIcon(service.iconType, 'w-5 h-5')}
+                  <div class="flex items-start justify-between mb-3 sm:mb-4">
+                    <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-lg bg-slate-800/80 border border-slate-700/60 flex items-center justify-center text-slate-300">
+                      ${getServiceIcon(service.iconType, 'w-4 h-4 sm:w-5 sm:h-5')}
                     </div>
-                    <span class="px-2 py-0.5 rounded text-[11px] font-medium border ${badgeClass}">
+                    <span class="px-2 py-0.5 rounded text-[10px] sm:text-[11px] font-medium border ${badgeClass}">
                       ${service.badgeText}
                     </span>
                   </div>
 
-                  <h3 class="text-base font-bold text-white mb-1">
+                  <h3 class="text-base font-bold text-white mb-1 break-keep">
                     ${service.name}
                   </h3>
                   <div class="text-xs text-blue-400 font-mono mb-2">
                     ${service.domain}
                   </div>
-                  <p class="text-xs text-slate-400 leading-relaxed mb-4">
+                  <p class="text-xs text-slate-400 leading-relaxed mb-4 break-keep">
                     ${service.description}
                   </p>
                 </div>
@@ -102,11 +102,11 @@ export function renderFloatingHubWidget(): string {
   const liveCount = services.filter(s => s.status === 'live').length;
 
   return `
-    <div id="floating-hub-container" class="fixed bottom-5 right-5 z-50 flex flex-col items-end">
+    <div id="floating-hub-container" class="fixed bottom-4 right-4 sm:bottom-5 sm:right-5 z-50 flex flex-col items-end">
       <!-- Expanded Popover Panel (Hidden by default, toggled via JS) -->
       <div 
         id="floating-hub-panel" 
-        class="hidden mb-3 w-80 sm:w-96 rounded-xl bg-slate-900 border border-slate-700/80 shadow-2xl p-4 transition-all duration-200"
+        class="hidden mb-2 sm:mb-3 w-[calc(100vw-2rem)] sm:w-96 max-w-sm rounded-xl bg-slate-900 border border-slate-700/80 shadow-2xl p-4 transition-all duration-200"
         role="dialog"
         aria-label="${t.hub.floating.title}"
       >
@@ -133,23 +133,23 @@ export function renderFloatingHubWidget(): string {
         </div>
 
         <!-- Micro Service Links -->
-        <div class="space-y-1.5 max-h-[340px] overflow-y-auto pr-1">
+        <div class="space-y-1.5 max-h-[320px] sm:max-h-[340px] overflow-y-auto pr-1">
           ${services.map(service => {
             const isLive = service.status === 'live';
 
             if (!isLive) {
               return `
-                <div class="p-2.5 rounded-lg bg-slate-800/40 border border-transparent flex items-center justify-between opacity-50">
-                  <div class="flex items-center gap-3">
-                    <div class="w-7 h-7 rounded bg-slate-800 flex items-center justify-center text-slate-500">
+                <div class="p-2 sm:p-2.5 rounded-lg bg-slate-800/40 border border-transparent flex items-center justify-between opacity-50">
+                  <div class="flex items-center gap-2.5 sm:gap-3">
+                    <div class="w-7 h-7 rounded bg-slate-800 flex items-center justify-center text-slate-500 shrink-0">
                       ${getServiceIcon(service.iconType, 'w-3.5 h-3.5')}
                     </div>
                     <div>
-                      <div class="text-xs font-medium text-slate-400">${service.name}</div>
+                      <div class="text-xs font-medium text-slate-400 break-keep">${service.name}</div>
                       <div class="text-[10px] text-slate-500 font-mono">${service.domain}</div>
                     </div>
                   </div>
-                  <span class="text-[10px] text-slate-500 px-1.5 py-0.5 bg-slate-800 rounded">${service.badgeText}</span>
+                  <span class="text-[10px] text-slate-500 px-1.5 py-0.5 bg-slate-800 rounded shrink-0">${service.badgeText}</span>
                 </div>
               `;
             }
@@ -159,21 +159,21 @@ export function renderFloatingHubWidget(): string {
                 href="${service.url}" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                class="p-2.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-600 flex items-center justify-between group transition-all"
+                class="p-2 sm:p-2.5 rounded-lg bg-slate-800/60 hover:bg-slate-800 border border-slate-700/60 hover:border-slate-600 flex items-center justify-between group transition-all"
               >
-                <div class="flex items-center gap-3">
-                  <div class="w-7 h-7 rounded bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 transition-colors">
+                <div class="flex items-center gap-2.5 sm:gap-3">
+                  <div class="w-7 h-7 rounded bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 transition-colors shrink-0">
                     ${getServiceIcon(service.iconType, 'w-3.5 h-3.5')}
                   </div>
                   <div class="text-left">
-                    <div class="text-xs font-semibold text-slate-200 group-hover:text-white transition-colors flex items-center gap-1.5">
+                    <div class="text-xs font-semibold text-slate-200 group-hover:text-white transition-colors flex items-center gap-1.5 break-keep">
                       <span>${service.name}</span>
                       <span class="text-[10px] font-normal text-slate-400 hidden xs:inline">(${service.tagline})</span>
                     </div>
                     <div class="text-[10px] text-slate-400 font-mono">${service.domain}</div>
                   </div>
                 </div>
-                ${getServiceIcon('external', 'w-3.5 h-3.5 text-slate-500 group-hover:text-slate-300 transition-colors')}
+                ${getServiceIcon('external', 'w-3.5 h-3.5 text-slate-500 group-hover:text-slate-300 transition-colors shrink-0')}
               </a>
             `;
           }).join('')}
@@ -184,14 +184,14 @@ export function renderFloatingHubWidget(): string {
         </div>
       </div>
 
-      <!-- Trigger Button (Compact Clean Pill Badge) -->
+      <!-- Trigger Button (Compact Clean Pill Badge with safe mobile sizing) -->
       <button 
         id="floating-hub-toggle-btn"
-        class="flex items-center gap-2 px-3 py-2 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 hover:border-slate-600 shadow-card transition-all text-xs font-medium"
+        class="flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-full bg-slate-800/95 hover:bg-slate-700 text-slate-200 hover:text-white border border-slate-700 hover:border-slate-600 shadow-card transition-all text-xs font-medium backdrop-blur-sm"
         aria-label="${t.hub.floating.triggerLabel}"
       >
-        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
-        <span class="font-medium">${t.hub.floating.triggerLabel}</span>
+        <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-blue-500"></span>
+        <span class="font-medium text-[11px] sm:text-xs">${t.hub.floating.triggerLabel}</span>
         <span class="px-1.5 py-0.2 rounded-full text-[10px] bg-slate-900 text-slate-400 border border-slate-700 font-mono">
           ${liveCount}
         </span>
