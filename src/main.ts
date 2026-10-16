@@ -4,8 +4,9 @@ import { renderHero } from './ui/Hero.ts';
 import { renderSolutions } from './ui/Solutions.ts';
 import { renderServicesHubSection, renderFloatingHubWidget } from './ui/ServiceHub.ts';
 import { renderFooter } from './ui/Footer.ts';
+import { setLanguage, onLanguageChange } from './data/i18n.store.ts';
 
-function initApp(): void {
+function renderApp(): void {
   const app = document.getElementById('app');
   if (!app) return;
 
@@ -30,6 +31,8 @@ function setupInteractions(): void {
   const floatingPanel = document.getElementById('floating-hub-panel');
   const floatingCloseBtn = document.getElementById('floating-hub-close-btn');
   const navHubTriggerBtn = document.getElementById('nav-hub-trigger-btn');
+  const langEnBtn = document.getElementById('lang-en-btn');
+  const langKoBtn = document.getElementById('lang-ko-btn');
 
   function openHubPanel(): void {
     if (floatingPanel) {
@@ -70,6 +73,21 @@ function setupInteractions(): void {
     });
   }
 
+  // Language switchers
+  if (langEnBtn) {
+    langEnBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setLanguage('en');
+    });
+  }
+
+  if (langKoBtn) {
+    langKoBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setLanguage('ko');
+    });
+  }
+
   // Close panel on click outside
   document.addEventListener('click', (e) => {
     if (floatingPanel && !floatingPanel.classList.contains('hidden')) {
@@ -88,9 +106,14 @@ function setupInteractions(): void {
   });
 }
 
-// DOMContentLoaded 리스너
+// Subscribe to language change events for immediate UI refresh
+onLanguageChange(() => {
+  renderApp();
+});
+
+// Initial boot
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initApp);
+  document.addEventListener('DOMContentLoaded', renderApp);
 } else {
-  initApp();
+  renderApp();
 }
