@@ -1,7 +1,12 @@
-import { COMPANY_INFO, SUB_SERVICES } from '../data/services.data.ts';
+import { COMPANY_INFO, getServices } from '../data/services.data.ts';
+import { getLanguage, getI18n } from '../data/i18n.store.ts';
+import { getBrandLogoSymbol } from './Icons.ts';
 
 export function renderFooter(): string {
   const currentYear = new Date().getFullYear();
+  const lang = getLanguage();
+  const t = getI18n();
+  const services = getServices(lang);
 
   return `
     <footer class="border-t border-white/[0.08] bg-[#080d19] text-slate-400 py-12 text-sm relative z-10">
@@ -9,29 +14,29 @@ export function renderFooter(): string {
         <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-10">
           <!-- Column 1: Brand Info -->
           <div class="md:col-span-2 space-y-3">
-            <div class="flex items-center gap-2">
-              <div class="w-6 h-6 rounded bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xs">
-                c
+            <div class="flex items-center gap-2.5">
+              <div class="w-7 h-7 rounded bg-blue-600/10 border border-blue-500/20 flex items-center justify-center text-blue-400 font-bold text-xs">
+                ${getBrandLogoSymbol('w-4 h-4 text-blue-400')}
               </div>
               <span class="font-bold text-base text-white tracking-tight">
                 ${COMPANY_INFO.name}
               </span>
             </div>
             <p class="text-xs text-slate-400 leading-relaxed max-w-md">
-              ${COMPANY_INFO.description}
+              ${t.footer.description}
             </p>
             <div class="text-xs text-slate-400">
-              공식 웹사이트: <span class="text-slate-300">coniteck.cc</span>
+              ${t.footer.officialWebsite}: <span class="text-slate-300">${COMPANY_INFO.domain}</span>
             </div>
           </div>
 
           <!-- Column 2: Sub-Services Quick Directory -->
           <div>
             <h4 class="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
-              패밀리 서비스
+              ${t.footer.familyTitle}
             </h4>
             <ul class="space-y-2 text-xs">
-              ${SUB_SERVICES.map(service => `
+              ${services.map(service => `
                 <li>
                   <a 
                     href="${service.url}" 
@@ -51,26 +56,25 @@ export function renderFooter(): string {
           <!-- Column 3: Tech Stack & Architecture -->
           <div>
             <h4 class="text-xs font-semibold text-slate-200 uppercase tracking-wider mb-3">
-              기술 아키텍처
+              ${t.footer.archTitle}
             </h4>
             <ul class="space-y-2 text-xs text-slate-400">
-              <li>• 고성능 정적 웹 아키텍처 (Vite & TypeScript)</li>
-              <li>• 글로벌 엣지 CDN 무중단 분산 배포</li>
-              <li>• 모듈형 SSOT 데이터 레이어 관리</li>
-              <li>• 서버리스 Zero-Daemon 환경</li>
+              ${t.footer.archItems.map(item => `
+                <li>• ${item}</li>
+              `).join('')}
             </ul>
           </div>
         </div>
 
         <div class="pt-6 border-t border-white/[0.06] flex flex-col sm:flex-row items-center justify-between text-xs text-slate-400 gap-4">
           <div>
-            © ${currentYear} ${COMPANY_INFO.fullName}. All rights reserved.
+            © ${currentYear} ${COMPANY_INFO.fullName}. ${t.footer.rights}
           </div>
           <div class="flex items-center gap-3">
-            <span class="text-slate-400">정적 호스팅 (GitHub Pages)</span>
+            <span class="text-slate-400">${t.footer.hostingNote}</span>
             <span>•</span>
             <a href="https://github.com/Git-Coni/git-coni.github.io" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
-              GitHub 저장소
+              ${t.footer.repo}
             </a>
           </div>
         </div>
