@@ -11,10 +11,10 @@ permissions:
   pages: write
   id-token: write
 
-# 동시 배포 제어: 한 번에 하나의 배포만 진행
+# 동시 배포 제어: 신규 배포 발생 시 이전 배포 취소 (cancel-in-progress: true)
 concurrency:
   group: "pages"
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 jobs:
   build:
