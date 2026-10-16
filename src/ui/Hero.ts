@@ -2,104 +2,88 @@ import { COMPANY_INFO, SUB_SERVICES } from '../data/services.data.ts';
 import { getServiceIcon } from './Icons.ts';
 
 export function renderHero(): string {
-  const primaryServices = SUB_SERVICES.filter(s => s.status === 'live');
+  const liveServices = SUB_SERVICES.filter(s => s.status === 'live');
 
   return `
-    <section class="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden cyber-grid-bg">
-      <!-- Glow ambient backdrops -->
-      <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute top-1/3 left-1/4 w-80 h-80 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute top-1/2 right-1/4 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
+    <section id="about" class="relative pt-32 pb-16 md:pt-40 md:pb-24 corporate-gradient-bg">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <!-- Top Badge -->
+        <!-- Sub-headline Pill Badge -->
         <div class="flex justify-center mb-6">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-900/90 border border-cyan-500/30 text-xs font-mono text-cyan-300 shadow-neon-cyan/20">
-            <span class="w-2 h-2 rounded-full bg-cyan-400 animate-ping"></span>
-            <span>NEXT-GEN VIRTUAL IT ENGINEERING LAB</span>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/90 border border-slate-700/60 text-xs font-medium text-slate-300">
+            <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+            <span>디지털 인프라 & 인터랙티브 웹 기술 스튜디오</span>
           </div>
         </div>
 
-        <!-- Headline & Main Copy -->
+        <!-- Main Headline -->
         <div class="text-center max-w-4xl mx-auto">
-          <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white leading-tight font-sans">
-            Architecting the
-            <span class="block bg-gradient-to-r from-cyan-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent neon-text-cyan">
-              Intelligent Web Horizon
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.15]">
+            안정적인 디지털 인프라와<br class="hidden sm:inline" />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-sky-300 to-indigo-300">
+              인터랙티브 웹 솔루션의 미래
             </span>
           </h1>
 
-          <p class="mt-6 text-lg sm:text-xl text-slate-300 font-light max-w-2xl mx-auto leading-relaxed">
-            <strong class="text-white font-medium">${COMPANY_INFO.name}</strong>은 
-            고성능 분산 인프라, 실시간 자산 시각화 도구, 인터랙티브 브라우저 엔터테인먼트를 설계하고 배포하는 가상 테크 시스템 엔지니어링 기업입니다.
+          <p class="mt-6 text-base sm:text-lg text-slate-400 max-w-2xl mx-auto leading-relaxed font-normal">
+            ${COMPANY_INFO.description}
           </p>
 
-          <!-- Quick Action Buttons -->
-          <div class="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <button 
-              id="hero-explore-hub-btn" 
-              class="px-6 py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm transition-all shadow-neon-cyan flex items-center gap-2"
+          <!-- Primary Actions -->
+          <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <a 
+              href="#services-hub" 
+              class="px-5 py-2.5 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-medium text-sm transition-all shadow-subtle flex items-center gap-2"
             >
-              ${getServiceIcon('hub', 'w-4 h-4')}
-              <span>서브 프로젝트 허브 둘러보기</span>
-            </button>
+              <span>패밀리 서비스 둘러보기</span>
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
+            </a>
             <a 
               href="#solutions" 
-              class="px-6 py-3 rounded-lg glass-panel hover:bg-slate-800/80 text-slate-200 font-medium text-sm transition-all border border-slate-700/60 flex items-center gap-2"
+              class="px-5 py-2.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-200 font-medium text-sm transition-all border border-slate-700 flex items-center gap-2"
             >
-              ${getServiceIcon('terminal', 'w-4 h-4 text-cyan-400')}
-              <span>기술 솔루션 & 아키텍처</span>
+              <span>핵심 사업 영역</span>
             </a>
           </div>
         </div>
 
-        <!-- Cybernetic Architecture Interactive Terminal Simulation -->
-        <div class="mt-14 max-w-3xl mx-auto rounded-xl glass-panel border border-cyan-500/20 overflow-hidden shadow-2xl">
-          <!-- Terminal Header -->
-          <div class="px-4 py-3 bg-slate-950/90 border-b border-cyan-500/20 flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
-              <span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
-              <span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
-              <span class="ml-2 font-mono text-xs text-slate-400">coniteck-edge-gateway v2.4 (coniteck.cc)</span>
-            </div>
-            <div class="font-mono text-[11px] text-cyan-400/90 flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-              <span>TLS 1.3 | HTTP/3</span>
-            </div>
-          </div>
-
-          <!-- Terminal Content -->
-          <div class="p-5 font-mono text-xs text-slate-300 space-y-3 bg-slate-950/60">
-            <div class="flex items-center gap-2 text-cyan-400">
-              <span class="text-slate-500">$</span>
-              <span>coniteck-ctl cluster status --format=json</span>
-            </div>
-            <div class="text-slate-400 grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1 border-t border-slate-800/80">
-              <div>• Cluster Status: <span class="text-emerald-400 font-semibold">HEALTHY (100%)</span></div>
-              <div>• Edge CDN: <span class="text-cyan-300">GitHub Pages / Global PoP</span></div>
-              <div>• Primary Domain: <span class="text-slate-200">coniteck.cc</span></div>
-              <div>• Active Sub-Nodes: <span class="text-emerald-400">${primaryServices.length} Deployed</span></div>
-            </div>
-
-            <!-- Interactive quick links inside terminal -->
-            <div class="pt-3 border-t border-slate-800/80">
-              <div class="text-slate-400 mb-2">Connected Mesh Endpoints:</div>
-              <div class="flex flex-wrap gap-2">
-                ${primaryServices.map(service => `
-                  <a 
-                    href="${service.url}" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="px-2.5 py-1 rounded bg-slate-900 border border-cyan-500/30 hover:border-cyan-400 hover:text-cyan-300 text-slate-300 transition-all flex items-center gap-1.5"
-                  >
-                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                    <span>${service.domain}</span>
-                    ${getServiceIcon('external', 'w-3 h-3 text-slate-500')}
-                  </a>
-                `).join('')}
+        <!-- Corporate Metrics / Impact Stats (Replaces the CLI terminal box) -->
+        <div class="mt-16 max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4">
+          ${COMPANY_INFO.metrics.map(metric => `
+            <div class="p-5 rounded-xl corporate-card">
+              <div class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+                ${metric.value}
+              </div>
+              <div class="mt-1 text-sm font-semibold text-slate-200">
+                ${metric.label}
+              </div>
+              <div class="mt-1 text-xs text-slate-400">
+                ${metric.description}
               </div>
             </div>
+          `).join('')}
+        </div>
+
+        <!-- Quick Access Nodes Bar -->
+        <div class="mt-8 max-w-5xl mx-auto p-4 rounded-xl corporate-panel flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-2 text-xs font-medium text-slate-400">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+            <span>현재 운영 중인 서비스 바로가기:</span>
+          </div>
+          <div class="flex flex-wrap items-center gap-2">
+            ${liveServices.map(service => `
+              <a 
+                href="${service.url}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="px-3 py-1.5 rounded-md bg-slate-900/90 hover:bg-slate-800 border border-slate-700/80 hover:border-slate-600 text-slate-300 hover:text-white text-xs transition-colors flex items-center gap-1.5"
+              >
+                <span>${service.name}</span>
+                <span class="text-[10px] text-slate-500">(${service.domain})</span>
+                ${getServiceIcon('external', 'w-3 h-3 text-slate-500')}
+              </a>
+            `).join('')}
           </div>
         </div>
 

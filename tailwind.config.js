@@ -8,39 +8,31 @@ export default {
   theme: {
     extend: {
       colors: {
-        brand: {
-          bg: '#05070f',
-          card: '#0c1020',
-          border: 'rgba(56, 189, 248, 0.15)',
-          cyan: '#00f0ff',
-          emerald: '#10b981',
-          indigo: '#6366f1',
-          violet: '#8b5cf6',
+        corporate: {
+          bg: '#0a0f1d',
+          surface: '#111827',
+          card: '#161f33',
+          cardHover: '#1c2842',
+          border: 'rgba(255, 255, 255, 0.08)',
+          borderSubtle: 'rgba(255, 255, 255, 0.05)',
+          primary: '#3b82f6',
+          primaryHover: '#2563eb',
+          accent: '#0ea5e9',
+          muted: '#94a3b8',
+          text: '#f8fafc',
+          heading: '#ffffff',
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
         mono: ['JetBrains Mono', 'Fira Code', 'monospace'],
       },
-      backgroundImage: {
-        'cyber-grid': "radial-gradient(circle, rgba(0, 240, 255, 0.08) 1px, transparent 1px)",
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-      },
       boxShadow: {
-        'neon-cyan': '0 0 20px -3px rgba(0, 240, 255, 0.35)',
-        'neon-emerald': '0 0 20px -3px rgba(16, 185, 129, 0.35)',
-        'neon-indigo': '0 0 20px -3px rgba(99, 102, 241, 0.35)',
+        'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px -1px rgba(0, 0, 0, 0.2)',
+        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.3)',
+        'card-hover': '0 10px 25px -5px rgba(0, 0, 0, 0.4), 0 8px 10px -6px rgba(0, 0, 0, 0.4)',
+        'modal': '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5)',
       },
-      animation: {
-        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-        'float': 'float 6s ease-in-out infinite',
-      },
-      keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-10px)' },
-        }
-      }
     },
   },
   plugins: [],
