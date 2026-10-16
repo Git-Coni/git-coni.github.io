@@ -5,11 +5,13 @@ on:
     branches: ["main"]
   workflow_dispatch:
 
+# GitHub Pages 배포를 위한 최소 필수 권한 설정
 permissions:
   contents: read
   pages: write
   id-token: write
 
+# 동시 배포 제어: 한 번에 하나의 배포만 진행
 concurrency:
   group: "pages"
   cancel-in-progress: false
@@ -26,6 +28,9 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
 
       - name: Install dependencies
         run: npm ci
