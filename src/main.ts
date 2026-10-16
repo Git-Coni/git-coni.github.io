@@ -10,7 +10,7 @@ function initApp(): void {
   if (!app) return;
 
   app.innerHTML = `
-    <div class="min-h-screen bg-[#05070f] text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-slate-950">
+    <div class="min-h-screen bg-[#0a0f1d] text-slate-100 flex flex-col selection:bg-blue-600 selection:text-white">
       ${renderNavbar()}
       <main class="flex-grow">
         ${renderHero()}
@@ -30,7 +30,6 @@ function setupInteractions(): void {
   const floatingPanel = document.getElementById('floating-hub-panel');
   const floatingCloseBtn = document.getElementById('floating-hub-close-btn');
   const navHubTriggerBtn = document.getElementById('nav-hub-trigger-btn');
-  const heroExploreBtn = document.getElementById('hero-explore-hub-btn');
 
   function openHubPanel(): void {
     if (floatingPanel) {
@@ -68,16 +67,6 @@ function setupInteractions(): void {
     navHubTriggerBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       openHubPanel();
-      floatingPanel?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-    });
-  }
-
-  if (heroExploreBtn) {
-    heroExploreBtn.addEventListener('click', () => {
-      const hubSection = document.getElementById('services-hub');
-      if (hubSection) {
-        hubSection.scrollIntoView({ behavior: 'smooth' });
-      }
     });
   }
 
